@@ -1,0 +1,11 @@
+/**GLOBAL STYLES**/
+:root{
+    --light-green: #DCF2E6;
+    --dark-green: #36403A;
+    --white: #F2F2F2;
+    --grya: #BFBFBF;
+    --black: #0D0D0D;
+}
+*{
+    font-family: 'Brevia', sans-serif;
+}
