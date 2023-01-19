@@ -10,7 +10,9 @@
     font-family: 'Brevia', sans-serif;
     box-sizing: border-box;
 }
-
+body{
+    background-color: var(--black);
+}
 /* HEADER STYLES */
 
 header{
@@ -84,4 +86,80 @@ header > h1{
     padding: 5px 20px;
     
     cursor: pointer;
+}
+/* CARD CONTAINER */
+
+.container{
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    padding: 0px 10px;
+}
+
+/* CARD STYLES */
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+
+    position: relative;
+    
+    width: fit-content;
+    padding: 50px 10px 10px 10px;
+
+    border-radius: 5px;
+}
+.card > .deleteButton{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    cursor: pointer;
+}
+.card> p{
+    margin: 0;
+    font-size: 15px;
+}
+.card > .title{
+    font-weight: 700;
+    font-size: 25px;
+    width: 100%;
+    word-wrap: break-word;
+}
+.card > input{
+    font-weight: 700;
+    
+    border-radius: 10px;
+    width: fit-content;
+    padding: 5px 60px;
+
+    margin: auto;
+    margin-top: 20px;
+
+    outline: none;
+    border: none;
+    
+    cursor: pointer;
+}
+/* READ */
+.read{
+    background-color: var(--dark-green);
+    color: var(--light-green)
+}
+
+.read > input{
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    box-shadow: 4px 4px 4px rgba(13, 13, 13, 0.45), inset 4px 4px 4px #F2F2F2;
+}
+/* NO READ */
+.notRead{
+    background-color: var(--light-green);
+    color: var(--dark-green)
+}
+
+.notRead > input{
+    background-color: var(--dark-green);
+    color: var(--light-green);
+    box-shadow: 4px 4px 4px rgba(13, 13, 13, 0.45), inset 4px 4px 4px rgba(191, 191, 191, 0.35);
 }
