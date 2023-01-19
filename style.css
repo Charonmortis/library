@@ -1,11 +1,87 @@
-/**GLOBAL STYLES**/
+/*GLOBAL STYLES*/
 :root{
     --light-green: #DCF2E6;
     --dark-green: #36403A;
     --white: #F2F2F2;
-    --grya: #BFBFBF;
+    --gray: #BFBFBF;
     --black: #0D0D0D;
 }
 *{
     font-family: 'Brevia', sans-serif;
+    box-sizing: border-box;
+}
+
+/* HEADER STYLES */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 8px 20px;
+    border-radius: 12px;
+    width: calc(100vw - 20px);
+    margin: 45px auto;
+    
+    background-color: #36403A;
+}
+
+header > h1{
+    font-weight: 700;
+    font-size: 40px;
+
+    margin: 0;
+    
+    color: var(--light-green);
+}
+.inputField{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.inputField > input[type="text"]{
+    outline: none;
+    border: none;
+    
+    background-color: var(--black);
+    color: var(--gray);
+    
+    padding: 5px 10px;
+    border-radius: 20px;
+    height: fit-content;
+
+}
+
+.inputField > label{
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.inputField > .checkboxStyle{
+    width: 19px;
+    height: 19px;
+    
+    cursor: pointer;
+    
+    background: var(--gray);
+
+    box-shadow: inset 4px 4px 4px rgba(13, 13, 13, 0.35);
+    border-radius: 4px;
+}
+
+.inputField > input[type="checkbox"]{
+    display: none;
+}
+
+.inputField > input[type="button"]{
+    background: #DCF2E6;
+
+    box-shadow: 4px 4px 4px rgba(13, 13, 13, 0.45), inset 4px 4px 4px #F2F2F2;
+    border-radius: 50px;
+
+    font-weight: 700;
+
+    padding: 5px 20px;
+    
+    cursor: pointer;
 }
