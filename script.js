@@ -16,20 +16,19 @@ const showBooks = ()=>{
 
 //Making UI functional
 
-const FORM_TITLE = document.querySelector('#title').value
-const FORM_AUTHOR = document.querySelector('#author').value
-const FORM_PAGES = document.querySelector('#pages').value
-const FORM_READ_STATUS = document.querySelector('#read').value
-const SUBMIT_BUTTON = document.querySelector('#read')
+const FORM_TITLE = document.querySelector('#title')
+const FORM_AUTHOR = document.querySelector('#author')
+const FORM_PAGES = document.querySelector('#pages')
+const FORM_READ_STATUS = document.querySelector('#read')
+const SUBMIT_BUTTON = document.querySelector('#submit')
 
 const addBooks = ()=>{
-    let title = FORM_TITLE
-    let author = FORM_AUTHOR
-    let read = FORM_READ_STATUS
-    let pages = FORM_PAGES
+    let title = FORM_TITLE.value
+    let author = FORM_AUTHOR.value
+    let read = FORM_READ_STATUS.checked
+    let pages = FORM_PAGES.value
 
     libraryBooks.push(new book(title, author, read, pages))
-    console.log(libraryBooks)
 }
 
-SUBMIT_BUTTON.addEventListener('click', addBooks())
+SUBMIT_BUTTON.addEventListener('click', ()=>{addBooks()})
