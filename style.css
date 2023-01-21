@@ -77,7 +77,6 @@ header > h1{
 
 .inputField > input[type="button"]{
     background: #DCF2E6;
-    outline: none;
     border: none;
 
     box-shadow: 4px 4px 4px rgba(13, 13, 13, 0.45), inset 4px 4px 4px #F2F2F2;
