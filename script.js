@@ -8,8 +8,7 @@ function book(title, author, read, pages){
     this.read = read
 }
 
-addCard = (book)=>{
-
+const addCard = (book)=>{
     let card = document.createElement('div')
     card.className = this.read ? 'card read' : 'card notRead'
     
@@ -71,7 +70,11 @@ const addBooks = ()=>{
     libraryBooks.unshift(new book(title, author, read, pages))
 }
 
+//Submit Button functions
 SUBMIT_BUTTON.addEventListener('click', ()=>{
     addBooks()
     addCard(libraryBooks[0])
 })
+
+//updating array Index
+const 
