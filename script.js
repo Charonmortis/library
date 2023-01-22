@@ -1,4 +1,5 @@
 let libraryBooks = []
+const CONTAINER = document.querySelector('#container')
 
 function book(title, author, read, pages){
     this.title = title
@@ -7,6 +8,45 @@ function book(title, author, read, pages){
     this.read = read
 }
 
+addCard = (book)=>{
+
+    let card = document.createElement('div')
+    card.className = this.read ? 'card read' : 'card notRead'
+    
+    //childs
+    card.innerHTML = //delete Button
+    `<svg width="20" height="20" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="deleteButton">
+        <path 
+            fill="currentColor"
+            fill-rule="evenodd" 
+            clip-rule="evenodd" 
+            d="M9.90946 2.3456C10.3 1.95507 10.3 1.32191 9.90946 0.931382C9.51894 0.540858 8.88577 0.540858 8.49525 0.931382L5.42045 4.00618L2.34566 0.931382C1.95513 0.540858 1.32197 0.540858 0.931443 0.931382C0.540919 1.32191 0.540919 1.95507 0.931443 2.3456L4.00624 5.42039L0.931443 8.49519C0.540919 8.88571 0.540919 9.51888 0.931443 9.9094C1.32197 10.2999 1.95513 10.2999 2.34566 9.9094L5.42045 6.8346L8.49525 9.9094C8.88577 10.2999 9.51894 10.2999 9.90946 9.9094C10.3 9.51888 10.3 8.88571 9.90946 8.49519L6.83467 5.42039L9.90946 2.3456Z"
+        />
+    </svg>`
+
+    let title = document.createElement('p')
+    title.className = 'title'
+    title.textContent = book.title
+    card.append(title)
+    
+    let author = document.createElement('p')
+    author.className = 'author'
+    author.textContent = book.author
+    card.append(author)
+    
+    let pages = document.createElement('p')
+    pages.className = 'pages'
+    pages.textContent = book.pages
+    card.append(pages)
+    
+    let readStatus = document.createElement('input')
+    readStatus.type = "button"
+    readStatus.value = book.read ? 'read' : 'Not Read'
+    card.append(readStatus)
+
+    //showing the card to the UI
+    CONTAINER.prepend(card)
+}
 
 const showBooks = ()=>{
     libraryBooks.forEach(element => {
@@ -27,8 +67,11 @@ const addBooks = ()=>{
     let author = FORM_AUTHOR.value
     let read = FORM_READ_STATUS.checked
     let pages = FORM_PAGES.value
-
-    libraryBooks.push(new book(title, author, read, pages))
+    
+    libraryBooks.unshift(new book(title, author, read, pages))
 }
 
-SUBMIT_BUTTON.addEventListener('click', ()=>{addBooks()})
+SUBMIT_BUTTON.addEventListener('click', ()=>{
+    addBooks()
+    addCard(libraryBooks[0])
+})
