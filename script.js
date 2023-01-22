@@ -8,6 +8,7 @@ function book(title, author, read, pages){
     this.read = read
 }
 
+//
 const addCard = (book)=>{
     let card = document.createElement('div')
     card.className = this.read ? 'card read' : 'card notRead'
@@ -70,12 +71,6 @@ const addBooks = ()=>{
     libraryBooks.unshift(new book(title, author, read, pages))
 }
 
-//Submit Button functions
-SUBMIT_BUTTON.addEventListener('click', ()=>{
-    addBooks()
-    addCard(libraryBooks[0])
-})
-
 //updating array Index
 
 const updateArrayIndex = ()=>{
@@ -85,3 +80,10 @@ const updateArrayIndex = ()=>{
         book.dataset.book = UIBooks.indexOf(book)
     });
 }
+
+//Submit Button functions
+SUBMIT_BUTTON.addEventListener('click', ()=>{
+    addBooks()
+    addCard(libraryBooks[0])
+    updateArrayIndex()
+})
