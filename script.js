@@ -77,4 +77,11 @@ SUBMIT_BUTTON.addEventListener('click', ()=>{
 })
 
 //updating array Index
-const 
+
+const updateArrayIndex = ()=>{
+    let UIBooks = Array.from(document.querySelectorAll('.card'))
+    
+    UIBooks.forEach(book => {
+        book.dataset.book = UIBooks.indexOf(book)
+    });
+}
