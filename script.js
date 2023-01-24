@@ -11,7 +11,7 @@ function book(title, author, read, pages){
 //adding cards
 const addCard = (book)=>{
     let card = document.createElement('div')
-    card.className = this.read ? 'card read' : 'card notRead'
+    card.className = book.read ? 'card read' : 'card notRead'
     
     //childs
     card.innerHTML = //delete Button
@@ -81,6 +81,7 @@ SUBMIT_BUTTON.addEventListener('click', ()=>{
     addCard(libraryBooks[0])
     updateArrayIndex()
     updateDeleteBtns()
+    updateReadBtns()
 })
 
 //delete card
@@ -95,9 +96,42 @@ const updateDeleteBtns = ()=>{
             
             currentCard = e.target.parentNode
             BookIndex = currentCard.dataset.book
-
+            
             libraryBooks = libraryBooks.filter(book => (libraryBooks.indexOf(book) != BookIndex))
             currentCard.remove()
+        })
+    })
+}
+
+//Change read status
+
+const updateReadBtns = ()=>{
+    readBtns = Array.from(document.querySelectorAll('.card '))
+    
+    readBtns.forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+            
+            e.stopImmediatePropagation()
+
+            currentCard = e.target.parentNode
+            BookIndex = currentCard.dataset.book
+
+            //Toggle Read Status
+            libraryBooks[BookIndex].read = !libraryBooks[BookIndex].read
+
+            //Show Read Status
+            button = currentCard.querySelector('input')
+            if (currentCard.className == 'card read') {
+                
+                currentCard.className = 'card notRead'
+                button.value = 'Not Read'
+                
+            } else {
+                
+                currentCard.className = 'card read'
+                button.value = 'Read'
+
+            }
         })
     })
 }
