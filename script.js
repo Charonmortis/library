@@ -42,7 +42,7 @@ const addCard = (book)=>{
     
     let readStatus = document.createElement('input')
     readStatus.type = "button"
-    readStatus.value = book.read ? 'read' : 'Not Read'
+    readStatus.value = book.read ? 'Read' : 'Not Read'
     card.append(readStatus)
 
     //showing the card to the UI
@@ -94,10 +94,10 @@ const updateDeleteBtns = ()=>{
             //without this it selects all of the other buttons and I don't know why        
             e.stopImmediatePropagation()
             
-            currentCard = e.target.parentNode
-            BookIndex = currentCard.dataset.book
+            const currentCard = e.target.parentNode
+            const BookIndex = currentCard.dataset.book
             
-            libraryBooks = libraryBooks.filter(book => (libraryBooks.indexOf(book) != BookIndex))
+            libraryBooks = libraryBooks.filter(book => (book.index !== BookIndex))
             currentCard.remove()
             updateArrayIndex()
         })
@@ -111,28 +111,20 @@ const updateReadBtns = ()=>{
     
     readBtns.forEach(btn => {
         btn.addEventListener('click', (e)=>{
-            
             e.stopImmediatePropagation()
 
-            currentCard = e.target.parentNode
-            BookIndex = currentCard.dataset.book
+            const currentCard = e.target.parentNode
+            const BookIndex = currentCard.dataset.book
 
             //Toggle Read Status
             libraryBooks[BookIndex].read = !libraryBooks[BookIndex].read
 
             //Show Read Status
-            button = currentCard.querySelector('input')
-            if (currentCard.className == 'card read') {
-                
-                currentCard.className = 'card notRead'
-                button.value = 'Not Read'
-                
-            } else {
-                
-                currentCard.className = 'card read'
-                button.value = 'Read'
-
-            }
+            const button = currentCard.querySelector('input')
+            
+            currentCard.classList.toggle('read');
+            currentCard.classList.toggle('notRead');
+            button.value = currentCard.classList.contains('read') ? 'Read' : 'Not Read';
         })
     })
 }
