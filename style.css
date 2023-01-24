@@ -91,8 +91,9 @@ header > h1{
 /* CARD CONTAINER */
 
 .container{
-    display: flex;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
     width: 100%;
     padding: 0px 10px;
 }
@@ -105,7 +106,7 @@ header > h1{
 
     position: relative;
     
-    width: fit-content;
+    width: 98%;
     padding: 50px 10px 10px 10px;
 
     border-radius: 5px;
