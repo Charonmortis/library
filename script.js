@@ -8,7 +8,7 @@ function book(title, author, read, pages){
     this.read = read
 }
 
-//
+//adding cards
 const addCard = (book)=>{
     let card = document.createElement('div')
     card.className = this.read ? 'card read' : 'card notRead'
@@ -17,6 +17,7 @@ const addCard = (book)=>{
     card.innerHTML = //delete Button
     `<svg width="20" height="20" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg" class="deleteButton">
         <path 
+            style="pointer-events:none"
             fill="currentColor"
             fill-rule="evenodd" 
             clip-rule="evenodd" 
@@ -48,12 +49,6 @@ const addCard = (book)=>{
     CONTAINER.prepend(card)
 }
 
-const showBooks = ()=>{
-    libraryBooks.forEach(element => {
-        // SHOW THE BOOKS
-    });
-}
-
 //Making UI functional
 
 const FORM_TITLE = document.querySelector('#title')
@@ -80,10 +75,29 @@ const updateArrayIndex = ()=>{
         book.dataset.book = UIBooks.indexOf(book)
     });
 }
-
 //Submit Button functions
 SUBMIT_BUTTON.addEventListener('click', ()=>{
     addBooks()
     addCard(libraryBooks[0])
     updateArrayIndex()
+    updateDeleteBtns()
 })
+
+//delete card
+
+const updateDeleteBtns = ()=>{
+    deleteBtn = Array.from(document.querySelectorAll('.deleteButton'))
+    
+    deleteBtn.forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+            //without this it selects all of the other buttons and I don't know why        
+            e.stopImmediatePropagation()
+            
+            currentCard = e.target.parentNode
+            BookIndex = currentCard.dataset.book
+
+            libraryBooks = libraryBooks.filter(book => (libraryBooks.indexOf(book) != BookIndex))
+            currentCard.remove()
+        })
+    })
+}
