@@ -99,6 +99,7 @@ const updateDeleteBtns = ()=>{
             
             libraryBooks = libraryBooks.filter(book => (libraryBooks.indexOf(book) != BookIndex))
             currentCard.remove()
+            updateArrayIndex()
         })
     })
 }
